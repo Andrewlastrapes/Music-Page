@@ -1,38 +1,44 @@
 
 
+<div class="container">
 <div class="row">
-  <div class="col s12 m8 center-align">
-    <h5>Contract Form</h5>
+  <div class="col s12 m12 center-align">
+    <h5 class="header">Contract Form</h5>
     <div class="card large">
       <div class="card-content">
         <div class="input-field">
-          <input type="text" [(ngModel)]="data.firstName" [ngModelOptions]="{standalone:
+          <input type="text" [(ngModel)]="data.name" [ngModelOptions]="{standalone:
             true}">
-          <label for="first_name">First Name</label>
+          <label for="name">Name</label>
         </div>
-        <div class="input-field">
-          <input type="text" [(ngModel)]="lastName" [ngModelOptions]="{standalone:
+        <div class="input-field ">
+          <input type="tel" [(ngModel)]="data.tele" [ngModelOptions]="{standalone:
             true}">
-          <label for="last_name">Last Name</label>
+          <label for="phone_number">Phone Number</label>
         </div>
+        <div class="input-field ">
+            <input type="tel" [(ngModel)]="data.email" [ngModelOptions]="{standalone:
+              true}">
+            <label for="email">Email</label>
+          </div>
         <div class="input-field">
-          <input type="text" [(ngModel)]="weddingVenue" [ngModelOptions]="{standalone:
+          <input type="text" [(ngModel)]="data.weddingVenue" [ngModelOptions]="{standalone:
             true}">
           <label for="wedding_venue">Wedding Venue</label>
         </div>
-        <div class="input-field">
-            <input type="date" [(ngModel)]="date" [ngModelOptions]="{standalone:
-              true}">
-            <label for="date">Date</label>
-          </div>
           <div class="row">
-          <div class="input-field col s6">
-              <input type="time" [(ngModel)]="startTime" [ngModelOptions]="{standalone:
+              <div class="input-field col s4">
+                  <input type="date" [(ngModel)]="data.date" [ngModelOptions]="{standalone:
+                    true}">
+                  <label for="date">Date</label>
+                </div>
+          <div class="input-field col s4">
+              <input type="time" [(ngModel)]="data.startTime" [ngModelOptions]="{standalone:
                 true}">
               <label for="start_time">Start Time</label>
             </div>
-            <div class="input-field col s6">
-                <input type="time" [(ngModel)]="finishTime" [ngModelOptions]="{standalone:
+            <div class="input-field col s4">
+                <input type="time" [(ngModel)]="data.finishTime" [ngModelOptions]="{standalone:
                   true}">
                 <label for="finish_time">Finish Time</label>
               </div>
@@ -43,23 +49,23 @@
             </div>
             <form action="#">
                 <div class="row">
-                  <div class="col s3">
+                  <div class="col s4">
                   <label>
-                    <input  type="checkbox" class="filled-in" [(ngModel)]="pType" [ngModelOptions]="{standalone:
+                    <input  type="checkbox" class="filled-in" [(ngModel)]="data.pType.ceremony" [ngModelOptions]="{standalone:
                       true}">
                     <span>Ceremony</span>
                   </label>
                 </div>
-                <div class="col s3">
+                <div class="col s4">
                  <label>
-                    <input  type="checkbox" class="filled-in" [(ngModel)]="pType" [ngModelOptions]="{standalone:
+                    <input  type="checkbox" class="filled-in" [(ngModel)]="data.pType.reception" [ngModelOptions]="{standalone:
                       true}">
                     <span>Reception</span>
                   </label>
                 </div>
-                <div class="col s3">
+                <div class="col s4">
                   <label>
-                    <input type="checkbox" class="filled-in" [(ngModel)]="pType" [ngModelOptions]="{standalone:
+                    <input type="checkbox" class="filled-in" [(ngModel)]="data.pType.other" [ngModelOptions]="{standalone:
                       true}">
                     <span>Other</span>
                   </label>
@@ -75,6 +81,6 @@
 <div class="center-align">
     <a class="waves-effect waves-light btn-large" (click)="changeComponent('/user-contract')"><i class="material-icons right">cloud</i>Submit</a>
 </div>
-
+</div>
 
 

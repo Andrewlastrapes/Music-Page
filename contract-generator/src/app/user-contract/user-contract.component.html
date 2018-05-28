@@ -1,4 +1,4 @@
-{{data.firstName}}
+
 
 <div class="container">
   <div class="row">
@@ -6,7 +6,7 @@
   </div>
 
   <div class="section">
-    <h6> Between: Andrew Lastrapes and {{data.firstName + " " + data.lastName}}</h6>
+    <h6> Between: Andrew Lastrapes and {{data.name}}</h6>
   </div>
   <div class="section">
     <div>
@@ -50,42 +50,33 @@
     <div class="card-content">
 
       <div class="section">
-        <h6>Purchaser Contact: {{data.firstName + " " + data.lastName}}</h6>
+        <h6>Purchaser Contact: {{data.name}}</h6>
       </div>
 
       <div class="section">
         <h6>Telephone: {{data.tele}}</h6>
       </div>
       <div class="section">
-        <h6>Email:</h6>
+        <h6>Email: {{data.email}}</h6>
       </div>
+      <div class="section">
+          <h6>Venue: {{data.weddingVenue}}</h6>
+        </div>
 
     </div>
   </div>
-  <div class="divider"></div>
-  <div class="card small">
-    <div class="card-content">
 
-      <div class="section">
-        <h6>Venue</h6>
-      </div>
-
-      <div class="section">
-        <h6>Address of Venue:</h6>
-      </div>
-    </div>
-  </div>
 
 
 
   <div class="divider"></div>
   <div>
-    This contract (the "Agreement") made AND entered into this 9 June, 2018 (the "Execution Date"),
+    This contract (the "Agreement") made AND entered into this {{data.date}} (the "Execution Date"),
   </div>
   <div class="divider"></div>
   <div class="section">
     <h6>1. Performance</h6>
-    <p>The entertainment to be provided by the Performer is generally described as {{data.pType}}. </p>
+    <p>The entertainment to be provided by the Performer is generally described as {{pType()}}. </p>
   </div>
   <div class="divider"></div>
   <div class="section">
@@ -135,22 +126,20 @@
   <div class="divider"></div>
   <div class="section">
     <h6> 9. Payment of Balance </h6>
-    <p> The Purchaser will pay to the Performer by June 9th, 2018 any outstanding balance of the Fee in the form of cash, check,
+    <p> The Purchaser will pay to the Performer by {{data.date}} any outstanding balance of the Fee in the form of cash, check,
       Venmo, or Paypal. </p>
   </div>
   <div class="divider"></div>
   <div class="section">
     <h6> 10. Cancellation By Purchaser </h6>
-    <p> The Purchaser reserves the right to cancel this agreement without obligation upon notice to the Performer prior to May
-      28, 2018. In the event of said cancellation, all payments made to the Performer will be forfeited. In the event of
-      cancellation for any reason by the Purchaser later than May 28, 2018, the Purchaser will promptly pay any outstanding
+    <p> The Purchaser reserves the right to cancel this agreement without obligation upon notice to the Performer prior to {{calculateCancelDate()}}. In the event of said cancellation, all payments made to the Performer will be forfeited. In the event of
+      cancellation for any reason by the Purchaser later than {{calculateCancelDate()}}, the Purchaser will promptly pay any outstanding
       balance owing to the Performer.</p>
   </div>
   <div class="divider"></div>
   <div class="section">
     <h6> 11. Cancellation By Performer</h6>
-    <p> The Performer reserves the right to cancel this Agreement without obligation upon notice to the Purchaser prior to May
-      28th, 2018. In the event the Performer cancels the Performance under the terms of this section, the Performer will
+    <p> The Performer reserves the right to cancel this Agreement without obligation upon notice to the Purchaser prior to {{calculateCancelDate()}} In the event the Performer cancels the Performance under the terms of this section, the Performer will
       promptly return any funds already paid to the Purchaser.</p>
   </div>
   <div class="divider"></div>
@@ -171,8 +160,7 @@
   <div class="divider"></div>
   <div class="section">
     <h6> 14. Security Deposit</h6>
-    <p> The Performer will not be required to post a bond or security deposit against any or all possible damage related to or
-      arising from the Performance.</p>
+    <p> None required</p>
   </div>
   <div class="divider"></div>
   <div class="section">
@@ -309,11 +297,11 @@
   <div class="section">
     <div class="row">
       <div class="col s4">
-        {{data.firstName + " " + data.lastName}}
+        {{data.name}}
       </div>
-      <div class="col s4">
-        Date
-      </div>
+        <div class="col s4">
+           {{displayDate()}}
+         </div>
       <div class="col s4">
         Signature Pad
       </div>
@@ -326,12 +314,17 @@
         Andrew Lastrapes
       </div>
       <div class="col s4">
-        Date
-      </div>
+          {{displayDate()}}
+       </div>
       <div class="col s4">
         Signature Pad
       </div>
     </div>
   </div>
-
+  <div class="row">
+  <div class="col s4"></div>
+  <div class="col s4">
+      <a class="waves-effect waves-light btn-large">Submit Contract</a>
+    </div>
+  </div>
 </div>

@@ -12,13 +12,18 @@ import { FormDataService } from "../form-data.service";
 export class UserFormComponent implements OnInit {
   @Output() redirect:EventEmitter<any> = new EventEmitter();
 
-  firstName: String;
-  lastName: String;
+  name: String;
+  tele: number;
+  email: String;
   weddingVenue: String;
   date: String;
   startTime: String;
   finishTime: String
-  pType: String; 
+  pType = {
+    ceremony: Boolean,
+    reception: Boolean,
+    other: Boolean
+  }
 
   data:any = {};
 
@@ -28,13 +33,18 @@ export class UserFormComponent implements OnInit {
   constructor(private router:Router,
               private dataServ: FormDataService) { 
     this.data = {
-      firstName: this.firstName,
-      lastName: this.lastName,
+      name: this.name,
+      tele: this.tele,
+      email: this.email,
       weddingVenue: this.weddingVenue,
       date: this.date,
       startTime: this.startTime,
       finishTime: this.finishTime,
-      pType: this.pType
+      pType: {
+        ceremony: this.pType.ceremony,
+        reception: this.pType.reception,
+        other: this.pType.other
+      }
     }
  
  
@@ -44,6 +54,7 @@ export class UserFormComponent implements OnInit {
     this.dataServ.setData(this.data);
     this.router.navigate([url]);//redirects url to new component
 }
+
 
 
   ngOnInit() {

@@ -20,7 +20,56 @@ export class UserContractComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.dataServ.getData();
-    console.log(this.data);
+    console.log(this.calculateCancelDate());
+    
+  }
+
+  pType(){
+    let c = this.data.pType.ceremony;
+    let r = this.data.pType.reception;
+    let o = this.data.pType.other;
+
+    if(c !== false && r === false && o === false){
+      return "Ceremony.";
+    } else if(r !== false && c === false && o === false) {
+      return "Reception.";
+    } else if(o !== false && c === false && r === false){
+      return "Other.";
+    } else if(c !== false && r !== false && o === false ){
+      return "Ceremony and Reception.";
+    } else if(c !== false && r === false && o !== false ){
+      return "Ceremony and Other.";
+    } else if(c === false && r !== false && o !== false ){
+      return "Reception and Other.";
+    } else if(c !== false && r !== false && o !== false ){
+      return "Ceremony, Reception, and Other."
+    }
+    
+  } 
+
+  calculateCancelDate(){
+  
+    let d = this.data.date;
+    let d1 = this.data.date[5].toString() + this.data.date[6].toString()
+    let d2 = (parseInt(d1) - 1).toString()
+
+    if(d2 === "0"){
+      d2 = "-12";
+      d1 = "-01"
+     d = d.toString().replace(d1, d2)
+    } else if(d2 === "11" || d2 === "10"){
+     d = d.toString().replace(d1, d2);
+    } else {
+      d2 = "0" + d2
+     d = d.toString().replace(d1, d2)
+    }
+    
+    return d
+    
+  }
+
+  displayDate(){
+    return new Date().toDateString();
   }
 
 }
