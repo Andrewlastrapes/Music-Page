@@ -52,7 +52,7 @@ export class UserFormComponent implements OnInit {
 
   changeComponent(url:string){
     this.dataServ.setData(this.data);
-    this.router.navigate([url]);//redirects url to new component
+    this.router.navigate([url]);
 }
 
 

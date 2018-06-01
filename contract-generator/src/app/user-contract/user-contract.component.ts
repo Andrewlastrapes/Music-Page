@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormDataService } from "../form-data.service";
 import { Router } from '@angular/router';
 
+import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
+
 @Component({
   selector: 'app-user-contract',
   templateUrl: './user-contract.component.html',
@@ -9,19 +11,21 @@ import { Router } from '@angular/router';
 })
 export class UserContractComponent implements OnInit {
   @Input() data:any;
+  contract$: FirebaseListObservable<any[]>;
+
+
 
   contract: string;
 
   constructor(private router:Router,
-               private dataServ:FormDataService) { 
+              private dataServ:FormDataService,
+              private af: AngularFireDatabase) { 
 
 
   }
 
   ngOnInit() {
-    this.data = this.dataServ.getData();
-    console.log(this.calculateCancelDate());
-    
+    this.data = this.dataServ.getData();    
   }
 
   pType(){
@@ -70,6 +74,10 @@ export class UserContractComponent implements OnInit {
 
   displayDate(){
     return new Date().toDateString();
+  }
+
+  submit(){
+    this.contract$.push({ content: this.data, done: false });
   }
 
 }
