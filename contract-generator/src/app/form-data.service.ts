@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 
+
+
 @Injectable()
 export class FormDataService {
   private data:any
+
 
   setData(data:any){
     this.data = data
@@ -11,6 +14,9 @@ export class FormDataService {
   getData():any {
     return this.data;
   }
+
+
+  
 
   constructor() { }
 

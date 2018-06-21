@@ -1,8 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormDataService } from "../form-data.service";
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
 
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
+
+
+
 
 @Component({
   selector: 'app-user-contract',
@@ -11,18 +15,17 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 })
 export class UserContractComponent implements OnInit {
   @Input() data:any;
-  contract$: FirebaseListObservable<any[]>;
+ 
 
 
 
-  contract: string;
 
   constructor(private router:Router,
               private dataServ:FormDataService,
-              private af: AngularFireDatabase) { 
-
-
-  }
+              private db: AngularFireDatabase
+            ) { 
+     
+}
 
   ngOnInit() {
     this.data = this.dataServ.getData();    
@@ -77,7 +80,22 @@ export class UserContractComponent implements OnInit {
   }
 
   submit(){
-    this.contract$.push({ content: this.data, done: false });
+  console.log(this.data)
+   const obj = this.db.database.ref('/contract');
+   obj.push({
+     name: this.data.name,
+     email: this.data.email,
+     finishTime: this.data.finishTime,
+     date: this.data.date,
+    //  ceremony: this.data.pType.ceremony,
+    //  reception: this.data.pType.reception,
+    //  other: this.data.pType.other,
+     startTime: this.data.startTime,
+     phone: this.data.tele,
+     venue: this.data.weddingVenue
+    })
+
   }
+
 
 }
